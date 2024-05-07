@@ -1,12 +1,10 @@
-import './App.css';
-
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { SpellsList, SpellDescription, NotFound } from './pages';
 import Header from './components/ui/Header';
 
 function App() {
   return (
-    <div className="main">
+    <div className="px-20">
       <Header />
       <Router>
         <Routes>
