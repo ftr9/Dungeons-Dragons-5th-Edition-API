@@ -4,7 +4,7 @@ import Header from './components/ui/Header';
 
 function App() {
   return (
-    <div className="px-20">
+    <div className="w-[80%] mx-auto">
       <Header />
       <Router>
         <Routes>
