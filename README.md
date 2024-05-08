@@ -1,5 +1,15 @@
 # Rahul Dotel implementation
 
+### packages used
+
+- React 18+
+- typescript
+- react-query
+- react-router-dom
+- zustand (state management)
+- tailwind css
+- vite-tsconfig-paths
+
 ## D&D 5th Edition API
 
 ### Steps to setup locally
@@ -21,3 +31,9 @@ pnpm install
 ```
 pnpm dev
 ```
+
+### some UX things implemented
+
+- since we are displaying over 300+ spells. so user must be able to search spells through search input.
+- also there is levels for each spells up 9 so DropDown button is provided for easier search
+- spells can be added to favourites list and stored in a local storage for later retrieval
