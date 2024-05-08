@@ -15,9 +15,11 @@ SpellFilter.LevelSelect = () => {
 
   return (
     <select className="bg-secondary text-black p-2 outline-none rounded-sm text-sm ">
-      <option>All levels</option>
+      <option value={-1}>All levels</option>
       {ten_levels.map(level => (
-        <option key={level}>{level}</option>
+        <option value={level} key={level}>
+          {level}
+        </option>
       ))}
     </select>
   );
