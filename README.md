@@ -1,4 +1,4 @@
-# Rahul Dotel implementation
+# Rahul Dotel implementation (D&D 5th Edition API)
 
 ### packages used
 
@@ -9,8 +9,6 @@
 - zustand (state management)
 - tailwind css
 - vite-tsconfig-paths
-
-## D&D 5th Edition API
 
 ### Steps to setup locally
 
