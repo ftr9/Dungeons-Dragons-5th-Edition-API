@@ -2,9 +2,12 @@ import ReactLogoImage from '../../assets/react-logo-image.png';
 import { IoHeart, IoHome } from 'react-icons/io5';
 import NavLinkItem from './NavLinkItem';
 import { useNavigate } from 'react-router-dom';
+import useFavouriteSpellsStore from '../features/spells/store/useFavouriteSpells.store';
 
 const Header = () => {
   const navigate = useNavigate();
+
+  const { spells } = useFavouriteSpellsStore();
 
   const allSpellsNavHandle = () => {
     navigate('/');
@@ -29,7 +32,7 @@ const Header = () => {
           <NavLinkItem.Icon>
             <IoHeart />
           </NavLinkItem.Icon>
-          <NavLinkItem.Name>Favourites</NavLinkItem.Name>
+          <NavLinkItem.Name>{`Favourites (${spells.length})`}</NavLinkItem.Name>
         </NavLinkItem>
       </div>
     </div>

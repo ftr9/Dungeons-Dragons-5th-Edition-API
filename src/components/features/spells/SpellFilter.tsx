@@ -10,11 +10,18 @@ SpellFilter.Name = ({ children }: { children: string }) => {
   return <p>{children}</p>;
 };
 
-SpellFilter.LevelSelect = () => {
-  const ten_levels = new Array(10).fill('a').map((_, idx) => idx + 1);
+SpellFilter.LevelSelect = ({
+  onChangeHandle,
+}: {
+  onChangeHandle: (value: string) => void;
+}) => {
+  const ten_levels = new Array(10).fill('a').map((_, idx) => idx);
 
   return (
-    <select className="bg-secondary text-black p-2 outline-none rounded-sm text-sm ">
+    <select
+      onChange={e => onChangeHandle(e.target.value)}
+      className="bg-secondary text-black p-2 outline-none rounded-sm text-sm "
+    >
       <option value={-1}>All levels</option>
       {ten_levels.map(level => (
         <option value={level} key={level}>

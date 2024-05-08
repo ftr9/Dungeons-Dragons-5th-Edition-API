@@ -1,28 +1,46 @@
 import { IoMdHeart } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import useFavouriteSpellsStore from './store/useFavouriteSpells.store';
 
 interface ISpellCardProps {
-  isAddedToFavourite: boolean;
   name: string;
   level: number;
   index: string;
+  url: string;
 }
 
-const SpellCard = ({
-  isAddedToFavourite,
-  name,
-  level,
-  index,
-}: ISpellCardProps) => {
+const SpellCard = ({ name, level, index, url }: ISpellCardProps) => {
   const navigate = useNavigate();
+
+  const [spells, addSpellsToFavouriteAction, removeSpellsFromFavouriteAction] =
+    useFavouriteSpellsStore(store => [
+      store.spells,
+      store.addSpellsToFavourite,
+      store.removeSpellsFromFavourite,
+    ]);
+
   const spellCardClickHandle = () => {
     navigate(`/spells/${index}`);
   };
 
+  const favouriteClickHandle = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    if (isAddedToFavourite) {
+      removeSpellsFromFavouriteAction(index);
+    } else {
+      addSpellsToFavouriteAction({ name, index, url, level });
+    }
+  };
+
+  const isAddedToFavourite = spells.find(spell => spell.index === index);
+
   return (
     <div
       onClick={spellCardClickHandle}
-      className=" border-white border-[0.5px] p-3 rounded-sm hover:cursor-pointer hover:bg-[#efd48b39] hover:border-transparent"
+      className=" border-white border-[0.5px] p-3 rounded-sm hover:cursor-pointer hover:bg-[#efd48b39] hover:border-transparent "
     >
       <div className="flex justify-between  items-center">
         <div>
@@ -32,6 +50,7 @@ const SpellCard = ({
           </div>
         </div>
         <div
+          onClick={favouriteClickHandle}
           className={`w-8 h-8 ${
             isAddedToFavourite ? 'bg-secondary' : 'bg-white'
           } rounded-full text-[18px] flex justify-center items-center`}

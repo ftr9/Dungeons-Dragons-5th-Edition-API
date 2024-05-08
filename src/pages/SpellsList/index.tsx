@@ -4,11 +4,35 @@ import {
   SpellCardContainer,
   SpellFilter,
 } from '../../components/features/spells';
-import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchAllSpell } from '../../components/features/spells/api';
+import Loading from '../../components/ui/Loading';
+import useSpellFilterByNameAndIndex from '../../components/features/spells/hooks/useSpellFilterByNameAndIndex';
 
 const SpellsList = () => {
-  const [spellName, setSpellName] = useState('');
-  const [spellLevel, setSpellLevel] = useState(-1);
+  const { isPending, error, data } = useQuery({
+    queryKey: ['all-spells'],
+    queryFn: fetchAllSpell,
+  });
+
+  const { filteredDataByNameAndIndex, setSpellLevel, setSpellName } =
+    useSpellFilterByNameAndIndex(data ? data : []);
+
+  const levelSelectHandle = (value: string) => {
+    setSpellLevel(parseInt(value));
+  };
+
+  const inputChangeHandle = (value: string) => {
+    setSpellName(value);
+  };
+
+  if (isPending) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <p>Something went wrong</p>;
+  }
 
   return (
     <div>
@@ -20,62 +44,25 @@ const SpellsList = () => {
         <div className="max-w-[400px]">
           <SearchInput
             disabled={false}
-            inputValueChangeHandle={value => {
-              console.log(value);
-            }}
+            inputValueChangeHandle={inputChangeHandle}
           />
         </div>
       </div>
 
       <SpellFilter>
         <SpellFilter.Name>All Spells</SpellFilter.Name>
-        <SpellFilter.LevelSelect />
+        <SpellFilter.LevelSelect onChangeHandle={levelSelectHandle} />
       </SpellFilter>
 
-      <SpellCardContainer>
-        <SpellCard
-          name="SpellCard"
-          index="spell-card"
-          level={1}
-          isAddedToFavourite
-        />
-        <SpellCard
-          name="SpellCard"
-          index="spell-card"
-          level={1}
-          isAddedToFavourite
-        />
-        <SpellCard
-          name="SpellCard"
-          index="spell-card"
-          level={1}
-          isAddedToFavourite
-        />
-        <SpellCard
-          name="SpellCard"
-          index="spell-card"
-          level={1}
-          isAddedToFavourite
-        />
-        <SpellCard
-          name="SpellCard"
-          index="spell-card"
-          level={1}
-          isAddedToFavourite
-        />
-        <SpellCard
-          name="SpellCard"
-          index="spell-card"
-          level={1}
-          isAddedToFavourite
-        />
-        <SpellCard
-          name="SpellCard"
-          index="spell-card"
-          level={1}
-          isAddedToFavourite={false}
-        />
-      </SpellCardContainer>
+      {filteredDataByNameAndIndex.length === 0 ? (
+        <p>No spells !!</p>
+      ) : (
+        <SpellCardContainer>
+          {filteredDataByNameAndIndex.map(spell => (
+            <SpellCard key={spell.name} {...spell} />
+          ))}
+        </SpellCardContainer>
+      )}
     </div>
   );
 };
