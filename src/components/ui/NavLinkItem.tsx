@@ -1,10 +1,16 @@
 interface INavLinkItemProps {
   children: React.ReactNode;
+  onClicked: () => void;
 }
 
-const NavLinkItem = ({ children }: INavLinkItemProps) => {
+const NavLinkItem = ({ children, onClicked }: INavLinkItemProps) => {
   return (
-    <li className="flex flex-col items-center cursor-pointer">{children}</li>
+    <li
+      onClick={onClicked}
+      className="flex flex-col items-center cursor-pointer"
+    >
+      {children}
+    </li>
   );
 };
 NavLinkItem.Icon = ({ children }: { children: React.ReactNode }) => {

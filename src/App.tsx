@@ -5,8 +5,8 @@ import Header from './components/ui/Header';
 function App() {
   return (
     <div className="w-[80%] mx-auto">
-      <Header />
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<SpellsList />} />
           <Route path="/spells/:index" element={<SpellDescription />} />
