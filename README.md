@@ -30,7 +30,7 @@ pnpm install
 pnpm dev
 ```
 
-### some UX things implemented
+# some UX things implemented
 
 - since we are displaying over 300+ spells. so user must be able to search spells through search input.
 - also there is levels for each spells up 9 so DropDown button is provided for easier search
