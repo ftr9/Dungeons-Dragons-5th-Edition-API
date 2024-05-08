@@ -1,4 +1,6 @@
-import { fetchSpellByIndex } from '../../components/features/spells/api';
+import { fetchSpellByIndex } from '@/components/features/spells/api';
+import Loading from '@/components/ui/Loading';
+
 import { useQuery } from '@tanstack/react-query';
 
 import BooleanValue from './components/BooleanValue';
@@ -8,9 +10,9 @@ import HigherLevel from './components/HigherLevel';
 import OtherInfos from './components/OtherInfos';
 import Classes from './components/Classes';
 import Info from './components/Info';
-import { useParams } from 'react-router-dom';
 import Material from './components/Material';
-import Loading from '../../components/ui/Loading';
+
+import { useParams } from 'react-router-dom';
 
 const SpellDescription = () => {
   const params = useParams();

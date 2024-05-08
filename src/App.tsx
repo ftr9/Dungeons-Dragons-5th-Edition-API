@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { SpellsList, SpellDescription, NotFound, Favourites } from './pages';
-import Header from './components/ui/Header';
+import Header from '@/components/ui/Header';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();

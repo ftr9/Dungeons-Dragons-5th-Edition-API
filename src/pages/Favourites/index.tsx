@@ -1,12 +1,12 @@
-import SearchInput from '../../components/ui/SearchInput';
+import SearchInput from '@/components/ui/SearchInput';
 import {
   SpellCard,
   SpellCardContainer,
   SpellFilter,
-} from '../../components/features/spells';
+} from '@/components/features/spells';
 
-import useFavouriteSpellsStore from '../../components/features/spells/store/useFavouriteSpells.store';
-import useSpellFilterByNameAndIndex from '../../components/features/spells/hooks/useSpellFilterByNameAndIndex';
+import useFavouriteSpellsStore from '@/components/features/spells/store/useFavouriteSpells.store';
+import useSpellFilterByNameAndIndex from '@/components/features/spells/hooks/useSpellFilterByNameAndIndex';
 
 const Favourites = () => {
   const { spells } = useFavouriteSpellsStore();

@@ -1,13 +1,13 @@
-import SearchInput from '../../components/ui/SearchInput';
+import SearchInput from '@/components/ui/SearchInput';
 import {
   SpellCard,
   SpellCardContainer,
   SpellFilter,
-} from '../../components/features/spells';
+} from '@/components/features/spells';
 import { useQuery } from '@tanstack/react-query';
-import { fetchAllSpell } from '../../components/features/spells/api';
-import Loading from '../../components/ui/Loading';
-import useSpellFilterByNameAndIndex from '../../components/features/spells/hooks/useSpellFilterByNameAndIndex';
+import { fetchAllSpell } from '@/components/features/spells/api';
+import Loading from '@/components/ui/Loading';
+import useSpellFilterByNameAndIndex from '@/components/features/spells/hooks/useSpellFilterByNameAndIndex';
 
 const SpellsList = () => {
   const { isPending, error, data } = useQuery({
