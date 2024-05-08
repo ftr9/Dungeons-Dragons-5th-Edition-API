@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { SpellsList, SpellDescription, NotFound } from './pages';
+import { SpellsList, SpellDescription, NotFound, Favourites } from './pages';
 import Header from './components/ui/Header';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SpellsList />} />
           <Route path="/spells/:index" element={<SpellDescription />} />
+          <Route path="/favourites" element={<Favourites />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

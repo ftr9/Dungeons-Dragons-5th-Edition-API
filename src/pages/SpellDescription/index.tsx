@@ -1,3 +1,6 @@
+import { RxCross1 } from 'react-icons/rx';
+import { MdCheck } from 'react-icons/md';
+
 const SecondaryHeader = ({ children }: { children: string }) => {
   return (
     <h1 className=" text-secondary text-[16px] font-semibold mb-2">
@@ -70,6 +73,25 @@ const Classes = ({ name, values }: { name: string; values: string[] }) => {
   );
 };
 
+const BooleanValue = ({
+  name,
+  isPresent,
+}: {
+  name: string;
+  isPresent: boolean;
+}) => {
+  return (
+    <div
+      className={`flex space-x-2 items-center text-sm py-2 px-5 rounded-full ${
+        isPresent ? 'bg-green-500' : 'bg-red-500'
+      }`}
+    >
+      <p>{name}</p>
+      {isPresent ? <MdCheck /> : <RxCross1 />}
+    </div>
+  );
+};
+
 const OtherInfos = () => {
   return (
     <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(150px,1fr))] mt-6">
@@ -99,6 +121,12 @@ const SpellDescription = () => {
   return (
     <div className=" md:w-[75%] mx-auto">
       <h1 className="text-secondary text-[24px] font-bold">Bane</h1>
+
+      <div className="flex  mb-2 space-y-2 space-x-0 md:space-x-3 md:space-y-0 mt-2 flex-wrap">
+        <BooleanValue name="Concentration" isPresent={false} />
+        <BooleanValue name="cast in a 10-min ritual" isPresent />
+      </div>
+
       <Description />
       <Components />
       <HigherLevel />

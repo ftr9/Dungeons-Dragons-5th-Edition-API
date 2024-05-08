@@ -5,8 +5,8 @@ import NavLinkItem from './NavLinkItem';
 const Header = () => {
   return (
     <div className="py-5 flex justify-between items-center">
-      <img src={ReactLogoImage} className="h-20" alt="react logo" />
-      <ul className="flex space-x-10">
+      <img src={ReactLogoImage} className="h-12 md:h-20" alt="react logo" />
+      <ul className="flex space-x-3 md:space-x-10">
         <NavLinkItem>
           <NavLinkItem.Icon>
             <IoHome />

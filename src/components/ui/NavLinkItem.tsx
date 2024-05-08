@@ -8,10 +8,10 @@ const NavLinkItem = ({ children }: INavLinkItemProps) => {
   );
 };
 NavLinkItem.Icon = ({ children }: { children: React.ReactNode }) => {
-  return <div className="text-xl">{children}</div>;
+  return <div className="text-[16px] md:text-[22px]">{children}</div>;
 };
 NavLinkItem.Name = ({ children }: { children: string }) => {
-  return <p className="text-sm mt-2">{children}</p>;
+  return <p className=" text-[12px] md:text-[16px] mt-2">{children}</p>;
 };
 
 export default NavLinkItem;
